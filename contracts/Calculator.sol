@@ -9,28 +9,13 @@ contract Calculator is AbstractCalculator {
         uint256 b,
         string memory operation
     ) public pure returns (uint256) {
-        if (
-            keccak256(abi.encodePacked(operation)) ==
-            keccak256(abi.encodePacked("add"))
-        ) {
-            return MathLibrary.add(a, b);
-        } else if (
-            keccak256(abi.encodePacked(operation)) ==
-            keccak256(abi.encodePacked("subtract"))
-        ) {
-            return MathLibrary.subtract(a, b);
-        } else if (
-            keccak256(abi.encodePacked(operation)) ==
-            keccak256(abi.encodePacked("multiply"))
-        ) {
-            return MathLibrary.multiply(a, b);
-        } else if (
-            keccak256(abi.encodePacked(operation)) ==
-            keccak256(abi.encodePacked("divide"))
-        ) {
-            return MathLibrary.divide(a, b);
-        } else {
-            revert("Invalid operation");
-        }
+        bytes32 op = keccak256(abi.encodePacked(operation));
+
+        if (op == keccak256("add")) return MathLibrary.add(a, b);
+        if (op == keccak256("subtract")) return MathLibrary.subtract(a, b);
+        if (op == keccak256("multiply")) return MathLibrary.multiply(a, b);
+        if (op == keccak256("divide")) return MathLibrary.divide(a, b);
+
+        revert("Invalid operation");
     }
 }

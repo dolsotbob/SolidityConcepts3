@@ -7,28 +7,19 @@ import "./MathLibrary.sol";
 abstract contract AbstractCalculator is ICalculator {
     using MathLibrary for uint256;
 
-    function add(uint256 a, uint256 b) external pure virtual returns (uint256) {
+    function add(uint256 a, uint256 b) external pure returns (uint256) {
         return MathLibrary.add(a, b);
     }
 
-    function subtract(
-        uint256 a,
-        uint256 b
-    ) external pure virtual returns (uint256) {
+    function subtract(uint256 a, uint256 b) external pure returns (uint256) {
         return MathLibrary.subtract(a, b);
     }
 
-    function multiply(
-        uint256 a,
-        uint256 b
-    ) external pure virtual returns (uint256) {
+    function multiply(uint256 a, uint256 b) external pure returns (uint256) {
         return MathLibrary.multiply(a, b);
     }
 
-    function divide(
-        uint256 a,
-        uint256 b
-    ) external pure virtual returns (uint256) {
+    function divide(uint256 a, uint256 b) external pure returns (uint256) {
         return MathLibrary.divide(a, b);
     }
 }
